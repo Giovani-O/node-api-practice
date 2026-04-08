@@ -1,3 +1,4 @@
+import cookie from '@fastify/cookie'
 import fastify from 'fastify'
 import { env } from './env'
 import { transactionsRoutes } from './routes/transactions'
@@ -8,6 +9,7 @@ app.get('/health', async () => {
   return `\nHTTP server running!\n\n`
 })
 
+app.register(cookie)
 app.register(transactionsRoutes, {
   prefix: 'transactions',
 })
