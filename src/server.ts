@@ -5,6 +5,10 @@ import { transactionsRoutes } from './routes/transactions'
 
 const app = fastify()
 
+app.addHook('preHandler', async (request, reply) => {
+  console.log(`[${request.method}] ${request.url}`)
+})
+
 app.get('/health', async () => {
   return `\nHTTP server running!\n\n`
 })
